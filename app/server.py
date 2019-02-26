@@ -10,24 +10,31 @@ app = Flask(__name__)
 
 knn_captcha = KnnCaptcha()
 
+#更新
+#base_url = 'http://202.207.247.49'
+#base_url = 'http://urp.tyut.risid.com'
+#base_url = 'http://wesw7votbh.bjhttp.cn/'
+#base_url = 'http://wesw7votbh.bjhttp.cn'
+#base_url = 'http://urp.intyut.cn:7889'
+#base_url = 'http://202.207.247.44:8089'
+base_url = 'http://202.207.247.44:8065/'
 
 @app.route('/', methods=['POST'])
 def login_router():
     #captcha_path = request.form['captcha_path']
     #login_path = request.form['login_path']
-    captcha_path = 'http://202.207.247.49/validateCodeAction.do?random=0.78756220483' #request.form['captcha_path']
-    login_path = 'http://202.207.247.49/loginAction.do' #request.form['login_path']
+    captcha_path = base_url+'/validateCodeAction.do?random=0.78756204832' #request.form['captcha_path']
+    login_path = base_url + '/loginAction.do' #request.form['login_path']
     token = request.form['token']
     username =  request.form['username']
     password =  request.form['password']
 
     headers = {
-        'HOST': '202.207.247.49',
         'Referer': '202.207.247.49',
         'Accept-Language': 'zh-CN,zh;q=0.9',
         'Cache-Control': 'max-age=0',
         'Connection': 'keep-alive',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.133 Safari/537.36',
         'Cookie': 'JSESSIONID=%s' % token
     }
 
@@ -74,7 +81,6 @@ def login(url,username, password, captcha, token):
     }
 
     header = {
-        'HOST': '202.207.247.49',
         'Referer': '202.207.247.49',
         'Accept-Language': 'zh-CN,zh;q=0.9',
         'Cache-Control': 'max-age=0',
